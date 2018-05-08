@@ -21,4 +21,5 @@ def main():
     plt.title('China VS US PM2.5')
     plt.tight_layout()
     plt.show()
+    
 main()

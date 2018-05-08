@@ -1,23 +1,24 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+from pd_utils import utils
 
 DATA_FILE = './data_pd/video_games_sales.csv'
 
 def collect_data():
     data_df = pd.read_csv(DATA_FILE)
     return data_df
-def inspect_data(data_df):
-    print('rows: {}, columns: {}'.format(data_df.shape[0],data_df.shape[1]))
-    print('*-' * 30)
-    print('===== DataPreview =====')
-    print(data_df.head())
-    print('*-' * 30)
-    print('===== BasicInfo =====')
-    print(data_df.info())
-    print('*-' * 30)
-    print('===== DataStatistic =====')
-    print(data_df.describe())
+# def inspect_data(data_df):
+#     print('rows: {}, columns: {}'.format(data_df.shape[0],data_df.shape[1]))
+#     print('*-' * 30)
+#     print('===== DataPreview =====')
+#     print(data_df.head())
+#     print('*-' * 30)
+#     print('===== BasicInfo =====')
+#     print(data_df.info())
+#     print('*-' * 30)
+#     print('===== DataStatistic =====')
+#     print(data_df.describe())
 
 def process_data(data_df):
     cln_data_df = data_df.dropna()
@@ -67,11 +68,12 @@ def show_results(top20_games,sales_comp_results):
 
 
 
-def main():
+def main(DATA_FILE):
     data_df = pd.read_csv(DATA_FILE)
-    inspect_data(data_df)
+    # inspect_data(data_df)
+    utils(DATA_FILE)
     filtered_data_df = process_data(data_df)
     top20_games, sales_comp_results = analyze_data(filtered_data_df)
     show_results(top20_games, sales_comp_results)
 
-main()
+main(DATA_FILE)
